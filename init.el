@@ -36,6 +36,7 @@ values."
      spell-checking
      syntax-checking
      python
+     ipython-notebook
      haskell
      javascript
      scala
@@ -244,6 +245,7 @@ values."
    dotspacemacs-whitespace-cleanup nil
    ;; distinguish TAB and C-i
    dotspacemacs-distinguish-gui-tab t
+   dotspacemacs-scratch-mode 'lisp-interaction-mode
    ))
 
 (defun dotspacemacs/user-init ()
