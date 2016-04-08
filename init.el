@@ -273,6 +273,7 @@ layers configuration. You are free to put any user code."
   (setq browse-url-browser-function 'eww-browse-url)
   ;(fcitx-evil-turn-on)
   ;(fcitx-aggressive-setup)
+  (load "init-js")
   (load "init-coffee")
   (load "init-sh")
   (load "init-web")
