@@ -5,6 +5,10 @@
 (evil-leader/set-key-for-mode 'eww-mode "ol" 'eww-back-url)
 (evil-leader/set-key-for-mode 'eww-mode "or" 'eww-forward-url)
 (evil-leader/set-key-for-mode 'eww-mode "oe" 'eww-browse-with-external-browser)
+(evil-leader/set-key-for-mode 'org-mode "og" 'org-insert-src-block)
+(evil-leader/set-key-for-mode 'org-mode "om" 'org-edit-src-code)
+(evil-leader/set-key "oo" 'spacemacs//ipython-notebook-ein:worksheet-insert-cell-below-o)
+;;-for-mode 'ein:notebook-multilang-mode
 (evil-global-set-key 'hybrid [(control \;)] 'backward-delete-char) ; flyspell-auto-correct-previous-word on insert-mode
 ;; C-w: spacemacs/backward-kill-word-or-region 
 ; (evil-global-set-key 'hybrid [(control \.)] 'backward-kill-word) ; flyspell-auto-correct-word

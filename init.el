@@ -29,11 +29,14 @@ values."
      git
      markdown
      org
-     chinese
+     deft
+     (chinese :variables ;chinese-enable-fcitx t
+              chinese-enable-youdao-dict t)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil)
      syntax-checking
      python
      ipython-notebook
@@ -45,14 +48,19 @@ values."
      html
      shell-scripts
      evernote
-     myevernote
+     ;myevernote
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(play-routes-mode)
+   dotspacemacs-additional-packages
+   '(play-routes-mode
+     graphviz-dot-mode
+     nodejs-repl
+     scala-mode)
+
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -265,12 +273,9 @@ layers configuration. You are free to put any user code."
       (load "mac"))
   ;(setq python-shell-virtualenv-path "/Users/zw/.virtualenvs/dj")
 
-  (setq-default dotspacemacs-configuration-layers
-                '((chinese :variables
-                           ;chinese-enable-fcitx t
-                           chinese-enable-youdao-dict t)))
   (require 'init-chinese-pyim)
   (setq browse-url-browser-function 'eww-browse-url)
+  (setq powerline-default-separator nil)
   ;(fcitx-evil-turn-on)
   ;(fcitx-aggressive-setup)
   (load "init-js")
@@ -278,6 +283,8 @@ layers configuration. You are free to put any user code."
   (load "init-sh")
   (load "init-web")
   (load "init-markdown")
+  (load "init-deft")
+  (load "init-org")
   (load "key-bind")
   ;; rename eww buffer to support multiple eww buffers
   (add-hook 'eww-mode-hook (lambda () (rename-buffer "eww" t)))
@@ -292,7 +299,7 @@ layers configuration. You are free to put any user code."
  '(pyim-dicts
    (quote
     ((:name "pinyin1" :file "~/.spacemacs.d/pyim/py.txt" :coding utf-8-unix)
-     (:name "sougou" :file "/Users/zw/.spacemacs.d/搜狗标准大词库.pyim" :coding utf-8-unix :dict-type pinyin-dict)))))
+     (:name "sougou" :file "/Users/zw/.spacemacs.d/pyim/搜狗标准大词库.pyim" :coding utf-8-unix :dict-type pinyin-dict)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
