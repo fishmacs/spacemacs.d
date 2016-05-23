@@ -273,11 +273,11 @@ layers configuration. You are free to put any user code."
       (load "mac"))
   ;(setq python-shell-virtualenv-path "/Users/zw/.virtualenvs/dj")
 
-  (require 'init-chinese-pyim)
   (setq browse-url-browser-function 'eww-browse-url)
   (setq powerline-default-separator nil)
   ;(fcitx-evil-turn-on)
   ;(fcitx-aggressive-setup)
+  (require 'init-chinese-pyim)
   (load "init-js")
   (load "init-coffee")
   (load "init-sh")

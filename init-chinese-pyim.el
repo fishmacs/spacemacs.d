@@ -40,4 +40,7 @@ when toggle off input method, switch to evil-normal-state if current state is ev
 
      ))
 
+(setq-default pyim-english-input-switch-functions
+              '(pyim-probe-program-mode))
+
 (provide 'init-chinese-pyim)
