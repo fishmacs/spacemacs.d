@@ -39,8 +39,11 @@ values."
                      spell-checking-enable-by-default nil)
      syntax-checking
      python
+     ruby
      ipython-notebook
      haskell
+     ocaml
+     purescript
      javascript
      scala
      java
@@ -48,6 +51,7 @@ values."
      html
      shell-scripts
      evernote
+     yaml
      ;myevernote
      ;; version-control
      )
@@ -59,7 +63,10 @@ values."
    '(play-routes-mode
      graphviz-dot-mode
      nodejs-repl
-     scala-mode)
+     scala-mode
+                                        ;reason-mode
+     )
+
 
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -127,7 +134,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro" ;;Consolas
-                               :size 13
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -262,6 +269,10 @@ It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
   (set-fontset-font "fontset-default" 'han '("STHeiti"))
+  (setq url-proxy-services
+        `(("no_proxy" . "^\\(localhost\\|192.168.*\\|127.*\\)")
+          ("http_proxy" . "127.0.0.1:8118")
+          ("https_proxy" . "127.0.0.1:8118")))
  )
 
 (defun dotspacemacs/user-config ()
@@ -279,12 +290,15 @@ layers configuration. You are free to put any user code."
   ;(fcitx-aggressive-setup)
   (require 'init-chinese-pyim)
   (load "init-js")
-  (load "init-coffee")
+  ;(load "init-coffee")
+  (load "init-scala")
   (load "init-sh")
   (load "init-web")
   (load "init-markdown")
   (load "init-deft")
   (load "init-org")
+  (load "init-neotree")
+  (load "init-erc")
   (load "key-bind")
   ;; rename eww buffer to support multiple eww buffers
   (add-hook 'eww-mode-hook (lambda () (rename-buffer "eww" t)))
@@ -298,8 +312,8 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(pyim-dicts
    (quote
-    ((:name "pinyin1" :file "~/.spacemacs.d/pyim/py.txt" :coding utf-8-unix)
-     (:name "sougou" :file "/Users/zw/.spacemacs.d/pyim/搜狗标准大词库.pyim" :coding utf-8-unix :dict-type pinyin-dict)))))
+    ((:name "sougou" :file "/Users/zw/.spacemacs.d/pyim/搜狗标准大词库.pyim" :coding utf-8-unix :dict-type pinyin-dict)
+     (:name "py.txt" :file "/Users/zw/.spacemacs.d/pyim/py.txt" :coding utf-8-unix :dict-type pinyin-dict)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

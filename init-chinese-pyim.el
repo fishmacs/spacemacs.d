@@ -1,3 +1,5 @@
+(setq pyim-directory "~/.spacemacs.d/pyim")
+
 ;; {{ make IME compatible with evil-mode
 (defun evil-toggle-input-method ()
   "when toggle on input method, switch to evil-insert-state if possible.
@@ -30,17 +32,19 @@ when toggle off input method, switch to evil-normal-state if current state is ev
   '(progn
      (setq default-input-method "chinese-pyim")
      (setq pyim-use-tooltip 'popup) ; don't use tooltip
-     ;; personal dictionary should be out of ~/.emacs.d if possible
-     (if (file-exists-p (file-truename "~/.eim/pyim-personal.txt"))
-       (setq pyim-personal-file "~/.eim/pyim-personal.txt"))
+     (setq pyim-directory "~/.spacemacs.d/pyim/")
+     (setq pyim-cache-directory (concat pyim-directory "cache"))
+     (setq pyim-property-file (concat pyim-directory "pyim-words-property.txt"))
+     (setq pyim-personal-file (concat pyim-directory "pyim-personal.txt"))
      ;; another official dictionary
      (setq pyim-dicts '((:name "pinyin1" :file "~/.spacemacs.d/pyim/py.txt" :coding utf-8-unix)))
 
      (setq pyim-fuzzy-pinyin-adjust-function nil)
-
      ))
 
 (setq-default pyim-english-input-switch-functions
               '(pyim-probe-program-mode))
+
+(global-set-key (kbd "s-\\") 'pyim-convert-pinyin-at-point)
 
 (provide 'init-chinese-pyim)
