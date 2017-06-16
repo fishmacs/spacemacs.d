@@ -64,7 +64,11 @@ values."
      graphviz-dot-mode
      nodejs-repl
      scala-mode
-                                        ;reason-mode
+     (reason-mode
+      :location (recipe
+                 :repo "facebook/reason"
+                 :fetcher github
+                 :files ("editorSupport/emacs/reason-mode.el" "editorSupport/emacs/refmt.el")))
      )
 
 
@@ -292,6 +296,8 @@ layers configuration. You are free to put any user code."
   (load "init-js")
   ;(load "init-coffee")
   (load "init-scala")
+  (load "init-ocaml")
+  (load "init-reason")
   (load "init-sh")
   (load "init-web")
   (load "init-markdown")
@@ -310,6 +316,9 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (youdao-dictionary yaml-mode winum which-key web-mode utop use-package tuareg toc-org shell-pop rubocop rspec-mode robe restart-emacs pyvenv pug-mode psc-ide play-routes-mode persp-mode pangu-spacing orgit org-plus-contrib org-download ocp-indent neotree move-text mmm-mode merlin markdown-toc markdown-mode magit-gitflow live-py-mode link-hint json-mode js2-refactor multiple-cursors intero info+ indent-guide hungry-delete highlight-indentation hide-comnt help-fns+ helm-projectile helm-make helm-gitignore helm-flx helm-company helm-c-yasnippet helm-ag gitattributes-mode git-timemachine git-link fish-mode find-by-pinyin-dired eyebrowse expand-region exec-path-from-shell evil-surround evil-nerd-commenter evil-mc evil-matchit evil-escape evil-ediff evil-anzu eshell-z ensime sbt-mode scala-mode ein request dumb-jump diminish company-statistics company-shell coffee-mode clang-format chinese-pyim auto-compile packed aggressive-indent ace-window ace-pinyin pinyinlib ace-link auto-complete avy inf-ruby anaconda-mode eclim company smartparens magit magit-popup git-commit with-editor highlight evil flycheck flyspell-correct haskell-mode yasnippet helm helm-core async skewer-mode js2-mode simple-httpd alert log4e projectile hydra f haml-mode dash s yapfify xterm-color ws-butler websocket web-beautify volatile-highlights vi-tilde-fringe uuidgen unfill undo-tree tagedit spaceline smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode reason-mode rbenv rake rainbow-delimiters pytest pyenv-mode py-isort psci popwin pkg-info pip-requirements paradox org-projectile org-present org-pomodoro org-bullets open-junk-file noflet nodejs-repl names mwim multi-term minitest macrostep lorem-ipsum livid-mode linum-relative less-css-mode json-snatcher json-reformat js-doc insert-shebang hy-mode htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers helm-themes helm-swoop helm-pydoc helm-mode-manager helm-hoogle helm-descbinds helm-css-scss haskell-snippets graphviz-dot-mode goto-chg google-translate golden-ratio gnuplot gntp gitignore-mode gitconfig-mode git-messenger gh-md geeknote fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator fancy-battery evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-search-highlight-persist evil-numbers evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-args eval-sexp-fu eshell-prompt-extras esh-help emmet-mode elisp-slime-nav disaster deft define-word cython-mode company-web company-tern company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-anaconda column-enforce-mode cmm-mode cmake-mode clean-aindent-mode cl-generic chruby chinese-word-at-point chinese-pyim-basedict caml bundler bind-key auto-yasnippet auto-highlight-symbol auto-dictionary anzu adaptive-wrap ace-jump-mode ace-jump-helm-line ac-ispell)))
  '(pyim-dicts
    (quote
     ((:name "sougou" :file "/Users/zw/.spacemacs.d/pyim/搜狗标准大词库.pyim" :coding utf-8-unix :dict-type pinyin-dict)
