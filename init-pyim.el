@@ -23,14 +23,14 @@ when toggle off input method, switch to evil-normal-state if current state is ev
     (activate-input-method default-input-method)
     (setq current-input-method default-input-method)))
 
-(global-set-key (kbd "C-\\") 'evil-toggle-input-method)
+; (global-set-key (kbd "C-\\") 'evil-toggle-input-method)
 ;; }}
 
 (setq pyim-punctuation-translate-p nil) ;; use western punctuation (ban jiao fu hao)
 
-(eval-after-load 'chinese-pyim
+(eval-after-load 'pyim
   '(progn
-     (setq default-input-method "chinese-pyim")
+     (setq default-input-method "pyim")
      (setq pyim-use-tooltip 'popup) ; don't use tooltip
      (setq pyim-directory "~/.spacemacs.d/pyim/")
      (setq pyim-cache-directory (concat pyim-directory "cache"))
@@ -45,6 +45,6 @@ when toggle off input method, switch to evil-normal-state if current state is ev
 (setq-default pyim-english-input-switch-functions
               '(pyim-probe-program-mode))
 
-(global-set-key (kbd "s-\\") 'pyim-convert-pinyin-at-point)
+(global-set-key (kbd "s-j") 'pyim-convert-code-at-point)
 
-(provide 'init-chinese-pyim)
+(provide 'init-pyim)

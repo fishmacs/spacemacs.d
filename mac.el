@@ -10,6 +10,7 @@
 '(prefer-coding-system 'utf-8)
 
 ;; chinese font(only english font in menlo or monaco)
+(set-fontset-font "fontset-default" 'han '("STHeiti"))
 ;(set-fontset-font
 ;    (frame-parameter nil 'font)
 ;    'han '("STHeiti" . "unicode-bmp"))

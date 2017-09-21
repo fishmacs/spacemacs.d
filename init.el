@@ -31,7 +31,7 @@ values."
      org
      deft
      (chinese :variables ;chinese-enable-fcitx t
-              chinese-enable-youdao-dict t)
+             chinese-enable-youdao-dict t)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -67,12 +67,12 @@ values."
      nodejs-repl
      ts-comint
      scala-mode
-     (reason-mode
-      :location (recipe
-                 :repo "facebook/reason"
-                 :fetcher github
-                 :files ("editorSupport/emacs/reason-mode.el" "editorSupport/emacs/refmt.el")))
-     )
+     ;; (reason-mode
+     ;;  :location (recipe
+     ;;             :repo "facebook/reason"
+     ;;             :fetcher github
+     ;;             :files ("editorSupport/emacs/reason-mode.el" "editorSupport/emacs/refmt.el")))
+    )
 
 
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -141,7 +141,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro" ;;Consolas
-                               :size 12
+                               :size 22
                                :weight regular
                                :width normal
                                :powerline-scale 1.1)
@@ -275,11 +275,8 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
-  (set-fontset-font "fontset-default" 'han '("STHeiti"))
-  (setq url-proxy-services
-        `(("no_proxy" . "^\\(localhost\\|192.168.*\\|127.*\\)")
-          ("http_proxy" . "127.0.0.1:8118")
-          ("https_proxy" . "127.0.0.1:8118")))
+  (setq url-gateway-method 'socks)
+  (setq socks-server '("Default-server" "127.0.0.1" 1080 5))
  )
 
 (defun dotspacemacs/user-config ()
@@ -287,8 +284,10 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (add-to-list 'load-path "~/.spacemacs.d")
-  (if (eq (window-system) 'ns)
-      (load "mac"))
+  (let ((ws (window-system)))
+    (cond ((eq ws 'ns) (load "mac"))
+	  ((eq ws 'x) (load "linux"))))
+  
   ;(setq python-shell-virtualenv-path "/Users/zw/.virtualenvs/dj")
 
   (setq browse-url-browser-function 'eww-browse-url)
@@ -296,13 +295,14 @@ layers configuration. You are free to put any user code."
   (setq custom-file "~/.emacs.d/custom.el")
   ;(fcitx-evil-turn-on)
   ;(fcitx-aggressive-setup)
-  (require 'init-chinese-pyim)
+  (require 'init-pyim)
+  (require 'helm-bookmark)
   (load custom-file)
   (load "init-js")
   ;(load "init-coffee")
   (load "init-scala")
   (load "init-ocaml")
-  (load "init-reason")
+  ;(load "init-reason")
   (load "init-sh")
   (load "init-web")
   (load "init-markdown")
@@ -322,9 +322,9 @@ layers configuration. You are free to put any user code."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(pyim-dicts
-   (quote
-    ((:name "sougou" :file "/Users/zw/.spacemacs.d/pyim/搜狗标准大词库.pyim" :coding utf-8-unix :dict-type pinyin-dict)
-     (:name "py.txt" :file "/Users/zw/.spacemacs.d/pyim/py.txt" :coding utf-8-unix :dict-type pinyin-dict)))))
+  (quote
+   ((:name "sougou" :file "/Users/zw/.spacemacs.d/pyim/搜狗标准大词库.pyim" :coding utf-8-unix :dict-type pinyin-dict)
+    (:name "py.txt" :file "/Users/zw/.spacemacs.d/pyim/py.txt" :coding utf-8-unix :dict-type pinyin-dict)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -332,3 +332,11 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (youdao-dictionary names chinese-word-at-point pyim pyim-basedict pangu-spacing find-by-pinyin-dired ace-pinyin pinyinlib yapfify yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen utop use-package unfill tuareg ts-comint toc-org tide tagedit spaceline smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode psci psc-ide popwin play-routes-mode pip-requirements persp-mode paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file ocp-indent noflet nodejs-repl neotree mwim multi-term move-text mmm-mode minitest merlin markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md geeknote fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime emmet-mode elisp-slime-nav ein dumb-jump disaster deft define-word cython-mode company-web company-tern company-statistics company-shell company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-anaconda column-enforce-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format chruby bundler auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
