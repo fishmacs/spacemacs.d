@@ -18,8 +18,8 @@ when toggle off input method, switch to evil-normal-state if current state is ev
       (progn
         (deactivate-input-method)
         (setq current-input-method nil))
-    (unless (bound-and-true-p chinese-pyim)
-      (require 'chinese-pyim))
+    (unless (bound-and-true-p pyim)
+      (require 'pyim))
     (activate-input-method default-input-method)
     (setq current-input-method default-input-method)))
 
