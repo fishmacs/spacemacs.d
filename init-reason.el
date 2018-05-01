@@ -19,6 +19,10 @@
 (add-hook 'reason-mode-hook
           (lambda ()
             (add-hook 'before-save-hook 'refmt-before-save)
-            (merlin-mode)))
+            (merlin-mode)
+            (utop-minor-mode)))
+
+(setq utop-command "opam config exec -- rtop -emacs")
+; (add-hook 'reason-mode-hook #'utop-minor-mode) 
 
 ; (setq merlin-ac-setup t)

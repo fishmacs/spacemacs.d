@@ -32,6 +32,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     csv
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -43,7 +44,7 @@ values."
      emacs-lisp
      rust
      git
-     markdown
+     (markdown :variables markdown-live-preview-engine 'vmd)
      org
      deft
      (chinese :variables ;chinese-enable-fcitx t
@@ -55,8 +56,8 @@ values."
                      spell-checking-enable-by-default nil)
      syntax-checking
      python
-     ruby
      ipython-notebook
+     ruby
      haskell
      ocaml
      purescript
@@ -84,8 +85,10 @@ values."
      ts-comint
      scala-mode
      vue-mode
+     image+
      ;; wanderlust
-     ;; (reason-mode
+     reason-mode
+     utop
      ;;  :location (recipe
      ;;             :repo "facebook/reason"
      ;;             :fetcher github
@@ -349,9 +352,10 @@ layers configuration. You are free to put any user code."
   (load "init-java")
   (load "init-js")
   ;(load "init-coffee")
+  (load "init-python")
   (load "init-scala")
   (load "init-ocaml")
-  ;(load "init-reason")
+  (load "init-reason")
   (load "init-sh")
   (load "init-web")
   (load "init-markdown")

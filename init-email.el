@@ -1,6 +1,6 @@
 (autoload 'post-mode "post" "mode for e-mail" t)
 (add-to-list 'auto-mode-alist
-             '("\\.*mutt-*\\|.article\\|\\.followup"
+             '("\\.*mutt-*\\|\\.article\\|\\.followup"
                . post-mode))
 (add-hook 'post-mode-hook
           (lambda()
