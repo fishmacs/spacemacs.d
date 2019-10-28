@@ -61,7 +61,8 @@ This function should only modify configuration layer settings."
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      syntax-checking
-     python
+     lsp
+     (python :variables python-backend 'lsp python-lsp-server 'mspyls)
      ipython-notebook
      ruby
      haskell
@@ -73,6 +74,7 @@ This function should only modify configuration layer settings."
      java
      kotlin
      c-c++
+     julia
      html
      shell-scripts
      evernote
@@ -493,10 +495,14 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; (setq url-gateway-method 'socks)
   ;; (setq socks-server '("Default-server" "127.0.0.1" 1080 5))
   ;; (setq socks-noproxy '("127.0.0.1" "localhost" "192.168.1.*"))
+  ;; (setq configuration-layer-elpa-archives
+  ;;       '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+  ;;         ("org-cn" . "http://elpa.emacs-china.org/org/")
+  ;;         ("gnu-cn" . "http://elpa.emacs-china.org/gnu/")))
   (setq configuration-layer-elpa-archives
-        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-          ("org-cn" . "http://elpa.emacs-china.org/org/")
-          ("gnu-cn" . "http://elpa.emacs-china.org/gnu/")))
+        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-load ()

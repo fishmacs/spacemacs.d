@@ -1,3 +1,4 @@
 /private
 /pyim/cache
 .spacemacs.env
+custom.el

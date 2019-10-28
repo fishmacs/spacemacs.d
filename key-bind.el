@@ -15,4 +15,4 @@
 (evil-global-set-key 'hybrid [(control \')] 'redo)
 ;(evil-global-set-key 'insert "\C-d" 'delete-char) ; evil-shift-left-line
 ;(evil-global-set-key 'insert "\C-e" 'move-end-of-line) ; evil-copy-from-below
-
+;; (spacemacs/set-leader-keys-for-major-mode 'python-mode "bb" 'pop-tag-mark)
