@@ -16,3 +16,4 @@
 ;(evil-global-set-key 'insert "\C-d" 'delete-char) ; evil-shift-left-line
 ;(evil-global-set-key 'insert "\C-e" 'move-end-of-line) ; evil-copy-from-below
 ;; (spacemacs/set-leader-keys-for-major-mode 'python-mode "bb" 'pop-tag-mark)
+(define-key evil-normal-state-map (kbd "gb") 'evil-jump-backward)

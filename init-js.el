@@ -14,18 +14,31 @@
  'js2-mode-hook
  (lambda ()
    (js2-mode-hide-warnings-and-errors)
+   (setq create-lockfiles nil)
    ;(evil-leader/set-key-for-mode 'js2-mode "m." 'tern-find-definition)
    ))
 
-(add-hook 'vue-mode-hook (lambda ()
-                           (spacemacs|define-jump-handlers vue-mode)
-                           ;; (tide-start-server-if-required)
-                           (add-to-list 'spacemacs-jump-handlers-vue-mode '(tide-jump-to-definition :async t)
-                           )))
+(add-hook
+ 'typescript-mode-hook
+ (lambda ()
+   (setq create-lockfiles nil)
+   ))
 
-(spacemacs/set-leader-keys-for-major-mode 'vue-mode
-  "sb" 'nodejs-repl-send-buffer
-  "sr" 'nodejs-repl-send-region
-  "se" 'nodejs-repl-send-last-sexp
-  "gr" 'tide-references
-  )
+(add-hook
+ 'vue-mode-hook
+ (lambda ()
+   (setq create-lockfiles nil)
+   ))
+
+;; (add-hook 'vue-mode-hook (lambda ()
+;;                            (spacemacs|define-jump-handlers vue-mode)
+;;                            ;; (tide-start-server-if-required)
+;;                            (add-to-list 'spacemacs-jump-handlers-vue-mode '(tide-jump-to-definition :async t)
+;;                            )))
+
+;; (spacemacs/set-leader-keys-for-major-mode 'vue-mode
+;;   "sb" 'nodejs-repl-send-buffer
+;;   "sr" 'nodejs-repl-send-region
+;;   "se" 'nodejs-repl-send-last-sexp
+;;   "gr" 'tide-references
+;;   )
