@@ -2,4 +2,7 @@
 
 (global-set-key (kbd "M-SPC") 'toggle-input-method)
 
+(setq-default
+ dotspacemacs-fullscreen-at-startup nil)
+
 ;(server-start)

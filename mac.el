@@ -31,3 +31,6 @@
 ;(setq ns-use-srgb-colorspace t)
 
 ;(setq mf-max-width 1438)
+
+(setq-default
+ dotspacemacs-fullscreen-at-startup t)
