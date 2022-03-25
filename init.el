@@ -270,8 +270,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro" ;;Consolas
-                               :size 22
+   dotspacemacs-default-font `("Source Code Pro" ;;Consolas
+                               :size ,(if (> (display-pixel-width) 1440) 22 12)
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
