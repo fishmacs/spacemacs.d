@@ -29,7 +29,7 @@ This function should only modify configuration layer settings."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '("~/.emacs.d/private")
+   dotspacemacs-configuration-layer-path '("~/.emacs.d/private/")
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
@@ -331,7 +331,7 @@ It should only modify the values of Spacemacs settings."
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
    ;; (default 'cache)
-   dotspacemacs-auto-save-file-location 'cache
+   dotspacemacs-auto-save-file-location 'original
 
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
@@ -594,7 +594,7 @@ layers configuration. You are free to put any user code."
   (setq powerline-default-separator nil)
   (setq whitespace-newline nil)
 
-  (run-with-idle-timer 20 t 'evil-normal-state)
+  ;; (run-with-idle-timer 20 t 'evil-normal-state)
   ;(fcitx-evil-turn-on)
   ;(fcitx-aggressive-setup)
   (require 'init-pyim)
@@ -607,10 +607,11 @@ layers configuration. You are free to put any user code."
   (load "init-scala")
   (load "init-ocaml")
   ;; (load "init-reason")
+  (load "init-julia")
+  (load "init-php")
   (load "init-sh")
   (load "init-web")
   (load "init-markdown")
-  (load "init-php")
   (load "init-deft")
   (load "init-org")
   (load "init-neotree")

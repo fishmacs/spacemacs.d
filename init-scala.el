@@ -1,1 +1,2 @@
-(setq ensime-startup-snapshot-notificationi nil)
+(with-eval-after-load 'lsp-metals
+  (setq scala-auto-treeview t))

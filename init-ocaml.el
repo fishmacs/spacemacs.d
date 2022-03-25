@@ -11,3 +11,5 @@
   "er" 'tuareg-eval-region
   "ee" 'tuareg-eval-phrase
   )
+
+(custom-set-faces '(merlin-eldoc-occurrences-face ((t nil))))
